@@ -1,3 +1,9 @@
+'''
+Lab 1: drawing a stick figure using turtle
+Marcel Schaeffer
+10/3/2017
+'''
+
 from turtle import *
 
 #draw head
@@ -23,9 +29,19 @@ forward(50)
 #draw eyes
 penup()
 home()
+left(65)
+forward(60)
 pendown()
 dot()
-forward(10)
+
+penup()
+home()
+right(250)
+forward(60)
+pendown()
+dot()
+
+
 
 
 

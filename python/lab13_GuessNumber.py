@@ -13,15 +13,17 @@ pick = 0
 i = 0
 
 #user enters picks
-while i < 10 and pick != x:
+while i < 10:
     pick = int(input('Pick an integer between 1-10: '))
+    if pick == x:
+        print('you win')
+        break
     if pick > x:
         print('too high')
     else:
         print('too low')
-    i = i + 1
-if pick == x:
-    print('You guessed correctly!')
+    i += 1
+
 
 if pick != x:
     print('You lose')

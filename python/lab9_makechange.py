@@ -32,3 +32,9 @@ z = y - nickle*nickles
 
 pennies = z//penny
 print('you have ' + str(pennies) + ' pennies')
+
+#Dollars to pennies
+
+dollar = float(input('Enter an amount of dollars; e.g. 1.25'))
+pens = dollar*100
+print(str(dollar) + ' dollars equals ' + str(pens) + ' pennies')

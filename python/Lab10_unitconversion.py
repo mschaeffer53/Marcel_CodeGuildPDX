@@ -7,7 +7,7 @@ Marcel Schaeffer
 #user types amount of feet
 
 feet = int(input('Type an amount of feet: '))
-unit = input('Pick units to convert feet into; i.e. feet, miles, kilometers: ')
+unit = input('Pick units to convert feet into; i.e. meters, miles, kilometers: ')
 
 #units in meters
 ft = 0.3048
@@ -18,7 +18,7 @@ km = 1000
 # result = feet*ft
 # print(str(feet) + ' feet is equal to ' + str(result) + ' meters.')
 
-if unit == 'feet':
+if unit == 'meters':
     result = feet*ft
     print(str(feet) + ' feet is equal to ' + str(result) + ' meters.')
 elif unit == 'miles':

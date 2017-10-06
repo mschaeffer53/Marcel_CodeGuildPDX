@@ -186,24 +186,13 @@ extract_less_than_ten(list7)
 def combine(nums1, nums2):
     newlist = []
     for i in range(len(nums1)):
-        newlist.append(i)
+        newlist.append(nums1[i])
+        newlist.append(nums2[i])
     print(newlist)
 
-
-
-'''
-    newlist = []
-    for item in nums1:
-        newlist.append(item)
-        for thing in nums2:
-            newlist.append(thing)
-
-    print(newlist)
-'''
-
-
-
+#lists
 list8 = ['a','b','c']
 list9 = [1,2,3]
 
+#execture the function
 combine(list8, list9)

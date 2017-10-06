@@ -188,11 +188,12 @@ def combine(nums1, nums2):
     for i in range(len(nums1)):
         newlist.append(nums1[i])
         newlist.append(nums2[i])
-    print(newlist)
+    return(newlist)
 
 #lists
 list8 = ['a','b','c']
 list9 = [1,2,3]
 
 #execture the function
-combine(list8, list9)
+mixed = combine(list8, list9)
+print(mixed)

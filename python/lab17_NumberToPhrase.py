@@ -16,7 +16,7 @@ ones_digit = num%10
 
 ones_list = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 teens_list = ['', '', '', 'thirteen', 'forteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
-tens_list = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+tens_list = ['', 'ten', 'dickity', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'] #https://imgur.com/r/thesimpsons/jkTdrB2
 hundreds_list = ['one hundred ', 'two hundred ', 'three hundred ', 'four hundred ', 'five hundred', 'six hundred', 'seven hundred', 'eight hundred', 'nine hundred', '']
 
 one = ones_list[ones_digit]

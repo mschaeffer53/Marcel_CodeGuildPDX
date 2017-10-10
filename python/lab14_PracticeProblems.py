@@ -12,12 +12,22 @@ print(word.count('i'))
 word2 = 'Pneumonoultramicroscopicsilicovolcanoconiosis'
 print((word2.count('p')) + (word2.count('P')))
 
+def  count_letter(char_to_find, text): #in class example
+    count = 0
+    for char in text:
+        if char == char_to_find:
+            count += 1
+    return count
+
+
 #problem 2
 
 latest = 'Pneumonoultramicroscopicsilicovolcanoconiosis'
 
 sort = sorted(latest)
 print((sort)[-1])
+
+
 
 #problem 3
 
@@ -29,6 +39,13 @@ whitespace = '     NANANANA BATMAN!     '
 caps = (whitespace[5:-5])
 no_caps = caps.lower()
 print(no_caps)
+
+def lower_case(text): #in class example
+    text = text.lower()
+    text = text.strip()
+    return text
+
+
 
 #problem 4
 
@@ -50,8 +67,8 @@ is_even(c)
 #create random from list function
 import random
 def random_element(a):
-    index = random.randint(0,2)
-    print(a[index])
+    index = random.randint(0,2) #(0, len(a)-1) in class example
+    return(a[index])
 
 #execute function
 fruits = ['apples', 'bananas', 'pears']
@@ -63,10 +80,10 @@ random_element(fruits)
 
 def max_of_three(a, b, c):
     max = sorted((a, b, c), reverse = True)
-    print(max[0])
+    return(max[0])
 
 #execute function
-max_of_three(100,5,3)
+print(max_of_three(100,5,3))
 
 #problem 7
 
@@ -81,18 +98,18 @@ while i < 20:
 
 def minimum(nums):
     sort = sorted(nums)
-    print(sort[0])
+    return(sort[0])
 
 def maximum(nums):
     sort = sorted(nums,reverse = True )
-    print(sort[0])
+    return(sort[0])
 
 #execute minimum/maximum functions
 list = [5, 3, 34, -22, 8, 99, -5]
 list2 = [ 50, 0, 50, 25, 75, 100]
 list3 = [1, 1, 4, 5, 5, 7, 5, 9, 5, 154]
-minimum(list)
-maximum(list)
+print(minimum(list))
+print(maximum(list))
 
 #create mean/mode functions
 
@@ -136,22 +153,23 @@ def reverse(nums):
     mylist = []
     for i in reversed(nums):
         mylist.append(i)
-    print(mylist)
+    return(mylist)
 
 #execute reverse function
 
 list4 = [1, 2, 3, 4, 5]
-reverse(list4)
+print(reverse(list4))
 
 #problem 9
 
 #write a function to find common elements between two lists
 
 def common_elements(num1, num2):
+
     for item in num1:
         for thing in num2:
             if item == thing:
-                print(item)
+                return(item)
 
 
 #execute common_elements function
@@ -159,7 +177,7 @@ def common_elements(num1, num2):
 list5 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 list6 = [2, 4, 6, 8, 9]
 
-common_elements(list5, list6)
+print(common_elements(list5, list6))
 
 #problem 10
 
@@ -170,7 +188,7 @@ def extract_less_than_ten(nums):
     for item in nums:
         if item < 10:
             newlist.append(item)
-    print(newlist)
+    return(newlist)
 
 
 #execute less than ten function

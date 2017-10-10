@@ -1,7 +1,7 @@
 '''
 Lab 16 -Pick 6
 Marcel Schaeffer
-10/6/17
+10/10/17
 '''
 
 # generate 6 random numbers
@@ -53,21 +53,47 @@ while i < num_picks:
     #print(x)
     i += 1
     tally = win(winning, x)
-    print(tally)
+    #print(tally)
 
-    #loop to count the totals for each ticket
+    #loop to count the totals for each ticket and tally the total tickets with that number of correct numbers
     if tally == 1:
-        pick1 = pick1.count() #something isn't working here
+        pick1 += 1
+    if tally == 2:
+        pick2 += 1
+    if tally == 3:
+        pick3 += 1
+    if tally == 4:
+        pick4 += 1
+    if tally == 5:
+        pick5 += 1
+    if tally == 6:
+        pick6 += 1
 
+# print(pick1)
+# print(pick2)
+# print(pick3)
+# print(pick4)
+# print(pick5)
+# print(pick6)
 
 # #winning guide
-# correct_1 = 4
-# correct_2 = 7
-# correct_3 = 100
-# correct_4 = 50000
-# correct_5 = 1000000
-# correct_6 = 25000000
-#
+correct_1 = 4
+correct_2 = 7
+correct_3 = 100
+correct_4 = 50000
+correct_5 = 1000000
+correct_6 = 25000000
+
 # #profits/losses calc
-# ticket_cost = -2
-# balance = (num_picks*ticket_cost) + #(winnings)
+ticket_cost = -2
+
+win1 = pick1*correct_1
+win2 = pick2*correct_2
+win3 = pick3*correct_3
+win4 = pick4*correct_4
+win5 = pick5*correct_5
+win6 = pick6*correct_6
+win_total = (win1 + win2 + win3 + win4 + win5 + win6)
+
+balance = (num_picks*ticket_cost) + win_total
+print('You bought ' + str(num_picks) + ' tickets and won $' + str(balance))

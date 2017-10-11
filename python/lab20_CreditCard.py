@@ -33,7 +33,7 @@ def valid(cc):
     #print(check_digit)
 
     if last_digit == check_digit: #compare check digit and last digit to confirm validity
-        return 'Valid'
-    return 'Invalid'
+        return 'Credit card is Valid!'
+    return 'Credit card is Invalid!'
 
 print(valid(cc))

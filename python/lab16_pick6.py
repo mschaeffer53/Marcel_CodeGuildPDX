@@ -97,3 +97,7 @@ win_total = (win1 + win2 + win3 + win4 + win5 + win6)
 
 balance = (num_picks*ticket_cost) + win_total
 print('You bought ' + str(num_picks) + ' tickets and won $' + str(balance))
+
+expenses = (num_picks*ticket_cost*-1)
+roi = balance/expenses
+print('Your return on investment is $' + str(roi))

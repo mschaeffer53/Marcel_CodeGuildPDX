@@ -32,11 +32,14 @@ def is_sorted(nums):
 #bogo sort
 def bogosort(nums):
     sort = False
+    count = 1
     while sort is False:
         shuffle(nums) #shuffle list of nums
         sort = is_sorted(nums) #nums is true if sorted else false
+        count += 1
         if sort is True:
             print(nums)
+            print('It took ' + str(count) + ' tries to sort the list.')
             return nums
 
 #run functions

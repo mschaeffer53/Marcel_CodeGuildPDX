@@ -32,7 +32,7 @@ def is_sorted(nums):
 #bogo sort
 def bogosort(nums):
     sort = False
-    count = 1
+    count = 0
     while sort is False:
         shuffle(nums) #shuffle list of nums
         sort = is_sorted(nums) #nums is true if sorted else false

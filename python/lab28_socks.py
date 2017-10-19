@@ -1,5 +1,5 @@
 '''
-Lab 27 - Socks
+Lab 28 - Socks
 Marcel Schaeffer
 10/19/17
 '''

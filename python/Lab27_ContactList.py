@@ -69,6 +69,7 @@ def update_contact(list_dict):
         contact = list_dict[i]
         if contact['Name'] == contact_name_update: #matches the name of contact to the contact name update
             contact[key_update] = value_update #changes the value of the key
+    print('Cool, here is the updated list of contacts...')
     print(list_dict)
     return list_dict
 
@@ -102,21 +103,27 @@ def repl():
             retrieve(list_dict)
             print('Now lets update a contact...')
             update_contact(list_dict)
+            delete_record(list_dict)
     return list_dict
-print(repl())
-
-
-
-
+#print(repl())
 
 
 #write dict to file
 
-# list_rewrite = []
-# for i in list_dict:
-#     list_rewrite.append(i)
-# print(list_rewrite)
-#
-# csv_rewrite = 'contacts_rewrite'
-# with open(csv_rewrite, 'w') as file:
-#     file.write(list_dict)
+#format for csv export
+new_line = '\n'
+header_text  = ','.join(list_dict[0].keys()) #format the keys
+header_text += new_line
+header_text = header_text.split(',')
+contact_text = []
+for item in list_dict: #format the values
+    contact = ','.join(item.values())
+    contact += new_line
+    contact_text.append(contact)
+
+final_contacts = header_text + contact_text #merge header and contacts
+final_contacts = str(final_contacts)
+
+csv_rewrite = 'contacts_rewrite.csv'
+with open(csv_rewrite, 'w') as file:
+    file.write(final_contacts)

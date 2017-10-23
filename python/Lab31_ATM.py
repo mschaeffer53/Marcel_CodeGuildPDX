@@ -12,6 +12,7 @@ class ATM:
         self.ledger = ''
 
     def check_balance(self): #check the balance
+        # print(self.balance)
         return(self.balance)
 
     def deposit(self, amount): #deposit to account
@@ -33,16 +34,37 @@ class ATM:
 
     def calc_interest(self): #Calc simple interest on balance
         interest = self.balance*self.interest_rate
-        return interest
+        print(interest)
 
     def print_transactions(self): #print the transaction ledger
-        return self.ledger
+        print(self.ledger)
 
-new_account = ATM()
-print(ATM.check_balance(new_account))
-print(ATM.deposit(new_account, 100000))
-print(ATM.check_withdrawal(new_account, 2050))
-print(ATM.withdraw(new_account, 2550))
-print(ATM.calc_interest(new_account))
-print(ATM.print_transactions(new_account))
-print(ATM.check_balance(new_account))
+atm = ATM()
+
+#ATM repl
+
+print('I am an ATM...')
+while True:
+    quit_commands = ['done', 'exit', 'quit']
+    option = input(
+        'What would you like to do? \nOptions: check balance, deposit, withdraw, calculate interest, print transactions, done')
+
+    if option in quit_commands:
+        break
+
+    if option == 'check balance':
+        print(atm.check_balance())
+
+    elif option == 'deposit':
+        deposit_amt = int(input('How much would you like to deposit? '))
+        atm.deposit(deposit_amt)
+
+    elif option == 'withdraw':
+        withdrawal_amt = int(input('How much would you like to withdraw? '))
+        atm.withdraw(withdrawal_amt)
+
+    elif option == 'calculate interest':
+        atm.calc_interest()
+
+    elif option == 'print transactions':
+        atm.print_transactions()

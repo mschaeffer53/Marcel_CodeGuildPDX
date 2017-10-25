@@ -7,6 +7,9 @@ Marcel Schaeffer
 
 import datetime
 import math
+import matplotlib.pyplot as plt
+
+
 
 path = r'C:\Users\ducks\Documents\vernon_rain.csv'
 
@@ -122,3 +125,15 @@ for key, value in year_dict.items():
         max_rain_year = key
 
 print(f'The year with the most daily average rain was {max_rain_year}.')
+
+
+#plot the data
+x_values = []#dates
+y_values = []#rain amount
+for line in data:
+    if line[0].year == 2012:
+        x_values.append(line[0])
+        y_values.append(line[1])
+
+plt.plot(x_values, y_values)
+plt.show()

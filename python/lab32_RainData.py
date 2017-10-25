@@ -131,9 +131,14 @@ print(f'The year with the most daily average rain was {max_rain_year}.')
 x_values = []#dates
 y_values = []#rain amount
 for line in data:
+    if line[0] == '-' or line[0] == '':
+        continue
+    if line[1] == '-' or line[1] == '':
+        continue
     if line[0].year == 2012:
         x_values.append(line[0])
         y_values.append(line[1])
 
+plt.scatter(x_values, y_values)
 plt.plot(x_values, y_values)
 plt.show()

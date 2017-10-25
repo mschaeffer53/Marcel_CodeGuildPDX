@@ -101,12 +101,14 @@ for year in years:
 #add total rain as values to year keys in dict
 for year in years:
     total_rain = 0
+    day_count = 0
     for line in data:
         if year == line[0].year:
             if line[1] == '-' or line[1] == '':
                 continue
             total_rain += int(line[1])
-    year_dict[year] = total_rain
+            day_count += 1
+    year_dict[year] = total_rain/day_count #average daily rain
 
 
 #find the rainiest year in a dictionary of years and rain values
@@ -119,4 +121,4 @@ for key, value in year_dict.items():
     if value == max_rain_val:
         max_rain_year = key
 
-print(f'The rainiest year was {max_rain_year}.')
+print(f'The year with the most daily average rain was {max_rain_year}.')

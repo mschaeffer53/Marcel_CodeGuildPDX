@@ -12,9 +12,7 @@ word = word.replace(' ', '')
 
 #check palindrome function
 def check_palindrome(word):
-    if word == word[::-1]:
-        return True
-    return False
+    return word == word[::-1]
 
 print(check_palindrome(word)) #print the answer
 
@@ -27,9 +25,8 @@ def check_anagram(word1, word2):
     word1 = ''.join(sorted(word1)) #alphabetize letters of word
     word2 = ''.join(sorted(word2))
 
-    if word1 == word2:
-        return True
-    return False
+    return word1 == word2
+
 
 word1 = input('See if two words are anagrams...Type first word: ') #user inputs words
 word2 = input('Type second word: ')

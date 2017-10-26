@@ -32,6 +32,7 @@ print(valley(data))
 #peaks and valleys
 def peaks_and_valleys(data): #create peaks and valleys function
     p_v = []
+    p_v.extend(peak(data))
     for i in peak(data): #append peak to list
         p_v.append(i)
     for i in valley(data): #append valley to list

@@ -113,17 +113,19 @@ def repl():
 #format for csv export
 new_line = '\n'
 header_text  = ','.join(list_dict[0].keys()) #format the keys
-header_text += new_line
+#header_text += new_line
 # header_text = header_text.split(',')
-contact_text = []
+contact_text = [header_text]
 for item in list_dict: #format the values
     contact = ','.join(item.values())
-    contact += new_line
+    #contact += new_line
     contact_text.append(contact)
 
-final_contacts = [header_text] + contact_text #merge header and contacts
-final_contacts[-1] = final_contacts[-1].strip()
-final_contacts = ''.join(final_contacts)
+
+#final_contacts = [header_text] + contact_text #merge header and contacts
+#final_contacts[-1] = final_contacts[-1].strip()
+#final_contacts = ''.join(final_contacts)
+final_contacts = '\n'.join(contact_text)
 
 #write csv to file
 csv_rewrite = 'contacts_rewrite.csv'

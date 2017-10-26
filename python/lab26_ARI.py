@@ -7,7 +7,6 @@ Marcel Schaeffer
 import math
 
 book = r'C:\Users\ducks\Documents\kama_sutra_python.txt' #location of book
-new_line = '\n'
 punct = ",./\;\"{}[]&@!#$%^*()'?&-" #punctuation to be removed
 book_name = book.rsplit('\\', 1)[-1] #name of the text doc
 
@@ -15,19 +14,20 @@ with open(book, 'r') as f:
     contents = f.read()
     working_book = contents.lower()
     sentences = working_book.split('.')  # make list of sentences
-    for char in new_line:
-        working_book = working_book.replace(char, ' ') #replaces new lines with a space
+    working_book = working_book.replace('\n', ' ') #replaces new lines with a space
     for char in punct:
         working_book = working_book.replace(char, "")  #remove punct
 
     working_book = working_book.split(' ')  # make list of words
 
 word_count = (len(working_book)) #amount of words in text
+print(working_book)
 sentence_count = (len(sentences)) #amount of sentences
 char_count = 0 #amount of characters in text
-for char in working_book:
-    for letter in char:
-        char_count += 1
+for word in working_book:
+    for char in word:
+        if char in 'abcdefghijklmnopqrstuvwxyz':
+            char_count += 1
 
 # print(char_count)
 # print(word_count)
@@ -57,6 +57,6 @@ ari_scale = {
 grade_level = ari_scale[ARI]
 print('The ARI for the ' + book_name + ' is ' + str(ARI) + '.')
 if ARI == 9:
-    print('This cooresponds to an ' + str(grade_level['grade_level']) + ' level of difficulty.')
-else: print('This cooresponds to a ' + str(grade_level['grade_level']) + ' level of difficulty.')
+    print('This corresponds to an ' + str(grade_level['grade_level']) + ' level of difficulty.')
+else: print('This corresponds to a ' + str(grade_level['grade_level']) + ' level of difficulty.')
 print('This is suitable for an average person ' + str(grade_level['ages']) + ' years old.')

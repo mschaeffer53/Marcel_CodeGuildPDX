@@ -23,3 +23,13 @@ for letter in encrypt:
 print(decrypt)
 
 
+def rotn(text, n):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz '
+    output = ''
+    for char in test:
+        index = alphabet.find(char)
+        index += n
+        if index >= len(alphabet):
+            index -= len(alphabet)
+        output += alphabet[index]
+    return output

@@ -20,7 +20,7 @@ def rand_sock(n):
     #print(sock_list)
     sock_count = {}
     _count_elements(sock_count, sock_list)
-    return(sock_count)
+    return sock_count
 
 #random sock style and color function
 def rand_sock_style_color(n):

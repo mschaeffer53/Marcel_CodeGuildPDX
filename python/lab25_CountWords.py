@@ -5,15 +5,13 @@ Marcel Schaeffer
 '''
 
 book = r'C:\Users\ducks\Documents\kama_sutra_python.txt' #location of book
-new_line = '\n'
 punct = ",./\;\"{}[]&@!#$%^*()'?&-" #punctuation to be removed
 
 with open(book, 'r') as f:
     contents = f.read()
     working_book = contents.lower()
     #print(working_book)
-    for char in new_line:
-        working_book = working_book.replace(char, ' ') #replaces new lines with a space
+    working_book = working_book.replace('\n', ' ') #replaces new lines with a space
     for char in punct:
         working_book = working_book.replace(char, "")  #remove punct
     working_book = working_book.split(' ')  # make list of words

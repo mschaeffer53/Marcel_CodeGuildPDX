@@ -55,6 +55,7 @@ def find_pair(nums, target):
 
 # print(find_pair(nums, target))
 
+
 #problem 4
 
 def double_word(string):
@@ -67,11 +68,13 @@ def double_word(string):
 # text = input('Enter some text: ')
 # print(double_word(text))
 
+
 #problem 5
 list_odds = [1,3,5]
 list_evens =[2,4,6]
 list_odds_evens = list(zip(list_odds, list_evens))
 # print(list_odds_evens)
+
 
 #problem 6
 def opposite(num1, num2):
@@ -80,6 +83,7 @@ def opposite(num1, num2):
     else: return False
 
 #print(opposite(4,-5))
+
 
 #problem 7
 def near_100(num):
@@ -90,10 +94,18 @@ def near_100(num):
 
 # print(near_100(111))
 
+
 #problem 8
 
+word = 'kitten'
+list_words = []
+for i in range(len(word)):
+    if i == 0:
+        list_words.append(word)
+    new_word = word[0:i] + word[i+1:len(word)]
+    list_words.append(new_word)
 
-
+#print(list_words)
 
 
 #problem 9
@@ -107,6 +119,7 @@ def count_hi(string): #count the frequency of 'hi' in a string
 
 # string = 'hihihibyehi'
 # print(f'The string \'{string}\' has the word \'hi\' in it {count_hi(string)} times.')
+
 
 #problem 10
 
@@ -165,7 +178,18 @@ def combine_all(list_lists):
 
 #problem 13
 
-#def fibonacci(n):
+def fibonacci(n):
+    fib_seq = []
+    for x in range(n):
+        if x < 2:
+            fib_seq.append(x)
+        else:
+            num = x-1 + x-2
+            fib_seq.append(num)
+    return fib_seq
+
+# n = int(input('How many fibonacci numbers would you like to see? '))
+# print(fibonacci(n))
 
 
 #problem 14

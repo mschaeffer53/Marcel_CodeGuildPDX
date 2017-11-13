@@ -1,0 +1,35 @@
+body {
+    background:#fff;
+    margin:0;
+}
+
+header {background:#004f2d; padding:40px}
+h1{color:#fff;
+    font-size:3EM}
+h2{color:#fff;
+    font-size:1.5EM}
+
+.summary{background: #0A8754;
+color:#fff; font-size:1.2EM;padding:40px}
+.summary a{color:#63D471}
+
+.preamble{background: #508CA4;
+color:#fff; font-size:1.2EM; padding:40px}
+
+.main{background: #fff;
+color:black; border-style:solid; border-radius: 20px; padding: 40px; margin: 40px 210px 40px 210px; border-width: 2px}
+.main a{color:#63D471}
+
+
+.design-selection{background: #508CA4; padding:40px}
+.design-selection a{color:#63D471}
+.wrapper h3{color:#fff}
+.design-archives{background: #0A8754; padding:40px}
+.design-archives a{color: #63D471}
+
+.zen-resources{background: #004f2d; padding:40px}
+.zen-resources a{color: #63D471}
+
+li{color:#fff}
+
+a{text-decoration:none}

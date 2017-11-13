@@ -1,0 +1,16 @@
+body{
+    background: silver;
+}
+
+h1{
+    text-align: center;
+    font-size: 48px;
+    color: #528ea4;
+}
+
+.rps_pics{
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+
+}

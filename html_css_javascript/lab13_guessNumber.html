@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="guessNumber_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <button id="bt">Push</button>
+    <div id="count_div">Count...0...</div>
+    <script>
+        let play_game = false;
+        let rand_num = Math.floor(Math.random() * 10 +1);
+        let count = 1;
+
+        while (play_game === false){
+//            alert('The random number is ' + rand_num);
+            let user_num = parseInt(prompt('Type a number between 1 - 10 '));
+
+            if (user_num === rand_num) {
+                alert('Correct!');
+                (play_game = true);
+                document.querySelector('#count_div').innerText += count.toString() + '...';
+            }
+            else if (user_num > rand_num){
+                alert('Too high! Try Again!');
+                count++;
+                document.querySelector('#count_div').innerText += count.toString() + '...';
+            }
+            else {
+                alert('Too low! Try Again!');
+                count++;
+                document.querySelector('#count_div').innerText += count.toString() + '...';
+            }
+        }
+
+        //alert('It took you ' + count + ' tries to guess the number.');
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-do List</title>
+    <meta name="description" content="Description">
+    <style>
+        .strike {
+            text-decoration: line-through;
+            text-decoration-color: red;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>
+        My To-do List
+    </h1>
+    <div>
+        <input id="add_item" type ='text'>
+        <button id="bt_add_item">Add</button>
+    </div>
+    <div>
+        <ul id="item_list">
+
+        </ul>
+    </div>
+    <script>
+        let bt_add_item = document.getElementById('bt_add_item');
+        let add_item = document.getElementById('add_item');
+        let item_list = document.getElementById('item_list');
+        bt_add_item.onclick = function () {
+            if(add_item.value === '') {
+                return;
+            }
+
+            let new_item = add_item.value;
+            let li = document.createElement('li');
+            li.innerText = new_item;
+            item_list.appendChild(li);
+            add_item.value = '';  //empties the text box
+
+            let remove_button = document.createElement('button');
+            remove_button.innerText = 'X';
+            remove_button.onclick = function () {
+                item_list.removeChild(this.parentElement);
+            };
+            li.appendChild(remove_button);
+
+            let complete_button = document.createElement('button');
+            complete_button.innerText = '✔';
+            complete_button.onclick = function () {
+                this.parentElement.classList.add('strike');
+            };
+            li.appendChild(complete_button);
+        };
+
+
+
+        //item_list.innerHTML += '<li>'+add_item.value + '</li>'; This works too
+    </script>
+</body>
+</html>

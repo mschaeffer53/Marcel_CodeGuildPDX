@@ -1,0 +1,17 @@
+body{
+    background-image: url('https://cnet3.cbsistatic.com/img/edNENAL1oMyriVHVcjTn-BjPNrg=/fit-in/970x0/2014/12/01/9bcaf58e-5f17-46b9-82a1-546898aad693/count.jpg');
+}
+
+#count_div{
+    margin-top: 350px;
+    width: 99vw;
+    height: 75px;
+    background: rgba(0, 0, 0, .5);
+    font-size: 24px;
+    color: white;
+}
+
+button{
+    background: black;
+    color: white;
+}

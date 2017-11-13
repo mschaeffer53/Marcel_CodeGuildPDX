@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+//        setTimeout(function)(){
+//            window.location = 'http://www.google.com';
+//        }, 3000);
+
+        function redirect() {
+            window.location = 'http://www.google.com';
+        }
+        setTimeout(redirect, 10000);
+
+
+
+        setInterval(function () {
+            alert('hi!');
+        }, 3000);
+
+
+
+        let count = 0;
+        let interval = setInterval(function(){
+            count +=1;
+            if count >= 5){
+            clearInterval(interval);
+            }
+            alert(count);
+        }, 2000);
+
+
+    </script>
+</body>
+</html>

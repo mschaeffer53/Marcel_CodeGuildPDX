@@ -1,0 +1,28 @@
+body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAPR5gUZxf2gr0UZjBFniGutrGNQsla1BBoE5Euj1jN4AtqAM3');
+    color: rgba(255, 255, 255, .6);
+}
+
+#deal_bt{
+    padding: 5px;
+    background: forestgreen;
+    color: white;
+}
+
+div{
+    padding: 5px;
+    font-size: 24px;
+}
+
+#input_name{
+}
+
+h1{
+    text-align: center;
+}
+
+.card_placement{
+    background: rgba(0, 0, 0, .7);
+    margin: 5px;
+    height: 65px;
+}

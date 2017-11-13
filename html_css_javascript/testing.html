@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+        function random_element(array) {
+	let random_index = Math.floor(Math.random()*array.length);
+	return array[random_index];
+}
+
+        let eyebrows = ['>', '|', ''];
+        let eyes = [':', ';', '='];
+        let noses = ['', '-', '\'', '^', 'o'];
+        let mouths = [')', '(', 'P', 'X', '(|)' ];
+
+        for (let i=0; i<3; ++i) {
+            let eyebrows = random_element(eyebrows);
+            let eyes = random_element(eyes);
+            let noses = random_element(noses);
+            let mouths = random_element(mouths);
+
+        }
+        alert(eyebrows + eyes + noses + mouths)
+
+
+
+
+    </script>
+</body>
+</html>

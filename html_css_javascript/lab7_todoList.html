@@ -5,14 +5,32 @@
     <title>To-do List</title>
     <meta name="description" content="Description">
     <style>
+        h1{
+            display: flex;
+            justify-content: center;
+        }
         .strike {
             text-decoration: line-through;
             text-decoration-color: red;
         }
+
+        .remove_bt{
+            color: red;
+        }
+
+        .complete_bt{
+            color:green;
+        }
+
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 </head>
 <body>
+
     <h1>
         My To-do List
     </h1>
@@ -22,9 +40,9 @@
     </div>
     <div>
         <ul id="item_list">
-
         </ul>
     </div>
+
     <script>
         let bt_add_item = document.getElementById('bt_add_item');
         let add_item = document.getElementById('add_item');
@@ -41,6 +59,8 @@
             add_item.value = '';  //empties the text box
 
             let remove_button = document.createElement('button');
+            remove_button.setAttribute('title',"Remove Item");
+            remove_button.classList.add('remove_bt');
             remove_button.innerText = 'X';
             remove_button.onclick = function () {
                 item_list.removeChild(this.parentElement);
@@ -48,11 +68,14 @@
             li.appendChild(remove_button);
 
             let complete_button = document.createElement('button');
+            complete_button.setAttribute('title',"Strike-thru item")
+            complete_button.classList.add('complete_bt');
             complete_button.innerText = '✔';
             complete_button.onclick = function () {
                 this.parentElement.classList.add('strike');
             };
             li.appendChild(complete_button);
+
         };
 
 

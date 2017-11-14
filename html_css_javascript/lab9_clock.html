@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>
+        Clock
+    </h1>
+    <hr/>
+    <h1 id="clock">
+    </h1>
+    <hr/>
+    <hr/>
+
+    <h2>
+        Stopwatch
+    </h2>
+    <hr/>
+    <h2 id="stopwatch">
+    </h2>
+    <div>
+        <button id="start_bt">START</button>
+        <button id="reset_bt">RESET</button>
+        <button id="lap_bt">LAP</button>
+        <button id="stop_bt">ST0P</button>
+    </div>
+    <hr/>
+    <hr/>
+
+
+
+
+    <script>
+        //function to display the date and time
+        function date_time() {
+            document.getElementById('clock').innerHTML = Date();
+        }
+        date_time();
+        //calls the date and time function every second
+        setInterval(date_time, 1000);
+
+
+        let date = new Date();
+
+        function format_time(date) {
+            let hours = add0(date.getHours());
+            let minutes = add0(date.getMinutes());
+            let seconds = add0(date.getSeconds());
+            let milliseconds = add0(date.getMilliseconds());
+            return hours + ':' + minutes + ':' + seconds + '.' + milliseconds;
+        }
+
+
+        function add0(num) {
+            return (num < 10)? '0'+num: num;
+        }
+
+
+
+        function update_stopwatch() {
+            document.getElementById('stopwatch').innerText = format_time(date);
+        }
+
+        let start = document.getElementById('start_bt');
+        start.onclick = function() {
+            this.disabled = true;
+            date.setHours(0, 0, 0, 0);
+            update_stopwatch();
+            let interval = setInterval(function () {
+                date.setMilliseconds(date.getMilliseconds()+50);
+                update_stopwatch();
+            }, 50);
+            let stop = document.getElementById('stop_bt');
+
+            stop.onclick = function(){
+            start.removeAttribute('disabled');
+            clearInterval(interval);
+            }
+        };
+
+        let reset = document.getElementById('reset_bt');
+        reset.onclick = function () {
+            date.setHours(0, 0, 0, 0);
+            update_stopwatch();
+        };
+
+
+    </script>
+</body>
+</html>

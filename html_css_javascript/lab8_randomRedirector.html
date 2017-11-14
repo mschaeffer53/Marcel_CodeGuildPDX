@@ -6,7 +6,9 @@
     <meta name="description" content="Description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
+        h2{
+            color: fuchsia;
+        }
 
     </style>
 </head>
@@ -14,6 +16,7 @@
     <h1>
         You are about to be redirected...
     </h1>
+    <h2 id="countdown">5</h2>
     <script>
         function random_element(array) {
 	        let random_index = Math.floor(Math.random()*array.length);
@@ -28,7 +31,29 @@
         function redirect() {
             window.location = website;
         }
-        setTimeout(redirect, 3000);
+//        setTimeout(redirect, 5000);
+
+        //create countdown
+
+
+        let count = 11;
+        function update_timer() {
+            count -= .1;
+            if (count > 0) {
+                let countdowns = document.querySelector('#countdown');
+                countdowns.innerText = count.toFixed(2);
+            }
+            else {
+                clearInterval(interval);
+                redirect();
+            }
+        }
+
+        update_timer();
+        let interval = setInterval(function() {
+            update_timer();
+        }, 100);
+
 
     </script>
 </body>

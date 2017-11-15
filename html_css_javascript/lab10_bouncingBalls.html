@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Balls</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #cnv{
+            border:2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="cnv" width="1520" height="720"></canvas>
+    <script>
+        let width = 1520;
+        let height = 750;
+        let angle = Math.random()*2*Math.PI;
+        let ball = {
+            radius: 15,
+            px: Math.random()*width,
+            py: Math.random()*height,
+            //vx: (2*Math.random()-1)*10,
+            //vy: (2*Math.random()-1)*10
+            vx: 10*Math.cos(angle),
+            vy: 10*Math.sin(angle),
+        };
+        let cnv = document.getElementById('cnv');
+        let left_position = 0;
+
+
+        function main_loop() {
+            // update the ball's position
+            ball.px += ball.vx;
+            ball.py += ball.vy;
+            // check if it hit a boundary
+            if (ball.px > 1510){
+                ball.vx = 10*Math.cos(angle)*-1;
+            }
+            if (ball.py > 740){
+                ball.vy = 10*Math.sin(angle)*-1
+            }
+            if (ball.px < 10){
+                ball.vx *= -1
+            }
+            if (ball.py < 10){
+                ball.vy *= -1
+            }
+            // draw the ball
+            let ctx = cnv.getContext("2d");
+            ctx.clearRect(0, 0, cnv.width, cnv.height);
+            ctx.fillStyle = "#295930";
+            ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);
+            window.requestAnimationFrame(main_loop);
+        }
+        window.requestAnimationFrame(main_loop);
+
+    </script>
+</body>
+</html>

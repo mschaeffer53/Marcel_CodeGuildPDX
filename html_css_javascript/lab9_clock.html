@@ -6,6 +6,10 @@
     <meta name="description" content="Description">
     <link rel="stylesheet" type="text/css" href="Style">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>
@@ -32,8 +36,13 @@
     <hr/>
     <hr/>
 
-
-
+    <h3 id="lap">
+        Lap
+    </h3>
+    <div id="lap_div">
+        <ul id="lap_list">
+        </ul>
+    </div>
 
     <script>
         //function to display the date and time
@@ -89,7 +98,18 @@
             update_stopwatch();
         };
 
+        let lap = document.getElementById('lap_bt');
+        lap.onclick = function () {
+//            let li = document.createElement('li');
+//            li.innerText = format_time(date);
+//            document.getElementById('lap_list').appendChild(li);
+            //$("ul").prepend("<li>" + format_time(date) + "</li>")
+            let li = document.createElement('li');
+            li.innerText = format_time(date);
+            let lap_list = document.getElementById('lap_list');
+            lap_list.insertBefore(li, lap_list.firstChild);
 
+        }
     </script>
 </body>
 </html>

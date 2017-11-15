@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Balls</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #cnv{
+            border:2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="cnv" width="1520" height="720"></canvas>
+    <script>
+        let width = 1200;
+        let height = 700;
+
+        let cnv = document.getElementById('cnv');
+        cnv.width = width;
+        cnv.height = height;
+
+        let balls = [];
+
+        for (let i=0; i<1000; ++i){
+            let angle = Math.random()*2*Math.PI;
+            let ball = {
+
+                radius: 3,
+                px: Math.random()*width,
+                py: Math.random()*height,
+                //vx: (2*Math.random()-1)*10,
+                //vy: (2*Math.random()-1)*10
+                vx: 5*Math.cos(angle),
+                vy: 5*Math.sin(angle),
+            };
+            balls.push(ball);
+        }
+
+
+
+        function main_loop() {
+            let ctx = cnv.getContext("2d");
+            ctx.clearRect(0, 0, cnv.width, cnv.height);
+            //ctx.fillStyle = "#295930";
+
+            for (let i=0; i<balls.length; ++i){
+                // update the ball's position
+                //let random_int = Math.random()*11111;
+                //color = "#"+random_int;
+                let ball = balls[i];
+                let red = Math.floor(Math.random()*256);
+                let green = Math.floor(Math.random()*256);
+                let blue = Math.floor(Math.random()*256);
+                ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+
+
+                ctx.beginPath();
+                ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false);
+
+                ctx.fill();
+
+
+                const friction = .5;
+                ball.px += ball.vx;
+                ball.py += ball.vy;
+
+                ball.vy += 0.1;
+                // check if it hit a boundary
+                if (ball.px + ball.radius > width){
+                    ball.vx *= -1*friction // = 10*Math.cos(angle)*-1;
+                }
+                if (ball.py + ball.radius > height){
+                    ball.vy *= -1*friction // = 10*Math.sin(angle)*-1
+                }
+                if (ball.px - ball.radius < 0){
+                    ball.vx *= -1*friction
+                }
+                if (ball.py - ball.radius < 0){
+                    ball.vy *= -1*friction
+
+                }
+                // draw the ball
+
+                //ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);
+
+            }
+            window.requestAnimationFrame(main_loop);
+        }
+        window.requestAnimationFrame(main_loop);
+
+
+    </script>
+</body>
+</html>

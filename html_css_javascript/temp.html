@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+
+
+</head>
+<body>
+    <div>
+        <input id="'contact_name" type="text" placeholder="name"/>
+        <input id="'contact_age" type="text" placeholder="age"/>
+        <input id="'contact_fruit" type="text" placeholder="fav fruit"/>
+        <input id="'contact_color" type="text" placeholder="fav color"/>
+        <button id="bt_add">add</button>
+    </div>
+    <hr/>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Fav Fruit</th>
+            <th>Fav Color</th>
+        </tr>
+        <tr>
+            <td>Joe</td>
+            <td>21</td>
+            <td>Orange</td>
+            <td>Blue</td>
+        </tr>
+
+    </table>
+
+
+
+    <script>
+        let contact_name = document.querySelector('#contact_name');
+        let contact_age = document.querySelector('#contact_age');
+        let contact_fruit = document.querySelector('#contact_fruit');
+        let contact_color = document.querySelector('#contact_color');
+        let bt_add = document.querySelector('#bt_add');
+
+        bt_add.addEventListener('click', function (){
+            let name = contact_name.value();
+            let age = contact_age.value();
+            let favorite_fruit = contact_fruit.value;
+            let favorite_color = contact_color.value;
+            let contact = new Contact(name, age, favorite_fruit, favorite_color);
+            contact.push(contact);
+
+            let tr = document.createEventObject('tr');
+            let td_name = document.createElement('td');
+            td_name.innerText = name;
+
+
+            tr.appendChild(name);
+
+
+
+            class Contact{
+                constructor(name, age, favorite_fruit, favorite_color){
+                    this.name = name;
+                    this.age = age;
+                    this.favorite_fruit = contact_fruit;
+                    this.favorite_color - contact_color;
+                }
+            }
+
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

@@ -16,8 +16,8 @@
 <body>
     <canvas id="cnv" width="1520" height="720"></canvas>
     <script>
-        let width = 1520;
-        let height = 750;
+        let width = 1200;
+        let height = 700;
         let angle = Math.random()*2*Math.PI;
         let ball = {
             radius: 15,
@@ -29,7 +29,8 @@
             vy: 10*Math.sin(angle),
         };
         let cnv = document.getElementById('cnv');
-        let left_position = 0;
+        cnv.width = width;
+        cnv.height = height;
 
 
         function main_loop() {
@@ -37,16 +38,16 @@
             ball.px += ball.vx;
             ball.py += ball.vy;
             // check if it hit a boundary
-            if (ball.px > 1510){
-                ball.vx = 10*Math.cos(angle)*-1;
+            if (ball.px + ball.radius > width){
+                ball.vx *= -1 // = 10*Math.cos(angle)*-1;
             }
-            if (ball.py > 740){
-                ball.vy = 10*Math.sin(angle)*-1
+            if (ball.py + ball.radius > height){
+                ball.vy *= -1 // = 10*Math.sin(angle)*-1
             }
-            if (ball.px < 10){
+            if (ball.px - ball.radius < 0){
                 ball.vx *= -1
             }
-            if (ball.py < 10){
+            if (ball.py - ball.radius < 0){
                 ball.vy *= -1
             }
             // draw the ball
@@ -57,6 +58,7 @@
             window.requestAnimationFrame(main_loop);
         }
         window.requestAnimationFrame(main_loop);
+
 
     </script>
 </body>

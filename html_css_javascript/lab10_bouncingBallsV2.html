@@ -25,17 +25,25 @@
 
         let balls = [];
 
-        for (let i=0; i<1000; ++i){
+        for (let i=0; i<10; ++i){
             let angle = Math.random()*2*Math.PI;
+            let red = Math.floor(Math.random()*256);
+            let green = Math.floor(Math.random()*256);
+            let blue = Math.floor(Math.random()*256);
+            let alpha = Math.random();
+            let color = 'rgba(' + 0 + ',' + 0 + ',' + blue + ',' + alpha + ')'; //only blue
+            //ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')'; random colors
             let ball = {
 
-                radius: 3,
+                radius: 25,
                 px: Math.random()*width,
                 py: Math.random()*height,
                 //vx: (2*Math.random()-1)*10,
                 //vy: (2*Math.random()-1)*10
-                vx: 5*Math.cos(angle),
-                vy: 5*Math.sin(angle),
+                vx: 2*Math.cos(angle),
+                vy: 2*Math.sin(angle),
+                color: color,
+                blue: Math.floor(Math.random()*256)
             };
             balls.push(ball);
         }
@@ -44,46 +52,73 @@
 
         function main_loop() {
             let ctx = cnv.getContext("2d");
-            ctx.clearRect(0, 0, cnv.width, cnv.height);
+            ctx.clearRect(0, 0, cnv.width, cnv.height);  //remove for tails
             //ctx.fillStyle = "#295930";
 
             for (let i=0; i<balls.length; ++i){
                 // update the ball's position
-                //let random_int = Math.random()*11111;
-                //color = "#"+random_int;
+
                 let ball = balls[i];
-                let red = Math.floor(Math.random()*256);
-                let green = Math.floor(Math.random()*256);
-                let blue = Math.floor(Math.random()*256);
-                ctx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
 
 
 
                 ctx.beginPath();
                 ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false);
-
+                //ctx.fillStyle = ball.color;
+                ctx.fillStyle = 'rgba(' + 0 + ',' + 0 + ',' + ball.blue + ',' + 1 + ')'; //only blue
                 ctx.fill();
 
 
-                const friction = .5;
+                const friction = .9;
                 ball.px += ball.vx;
                 ball.py += ball.vy;
 
-                ball.vy += 0.1;
+                //ball.vy += 0.1; //gravity
                 // check if it hit a boundary
+
+                // right
                 if (ball.px + ball.radius > width){
-                    ball.vx *= -1*friction // = 10*Math.cos(angle)*-1;
+                    ball.vx *= -1*friction; // = 10*Math.cos(angle)*-1;
+                    ball.px = width - ball.radius;
                 }
+
+                // bottom
                 if (ball.py + ball.radius > height){
-                    ball.vy *= -1*friction // = 10*Math.sin(angle)*-1
+                    ball.vy *= -1*friction; // = 10*Math.sin(angle)*-1
+                    ball.py = height-ball.radius;
                 }
+
+                // left
                 if (ball.px - ball.radius < 0){
-                    ball.vx *= -1*friction
+                    ball.vx *= -1*friction;
+                    ball.px = ball.radius;
                 }
+
+                // top
                 if (ball.py - ball.radius < 0){
-                    ball.vy *= -1*friction
+                    ball.vy *= -1*friction;
+                    ball.py = ball.radius;
+                }
+                for (let i=0; i<balls.length; ++i){
+                    for(let j=i+1; j<balls.length; ++j){
+
+                        let dx = balls[i].px-balls[j].px;
+                        let dy = balls[i].py-balls[j].py;
+                        let d = Math.sqrt(dx*dx + dy*dy);
+                        if (d < (balls[i].radius + balls[j].radius)){
+                            balls[i].radius += balls[j].radius;
+                            balls[i].blue = (balls[i].blue + balls[j].blue)/2;
+
+                            balls.splice(j, 1);
+
+                        }
+
+
+                    }
 
                 }
+
                 // draw the ball
 
                 //ctx.fillRect(ball.px-ball.radius, ball.py-ball.radius, 2*ball.radius, 2*ball.radius);

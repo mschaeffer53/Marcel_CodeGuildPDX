@@ -37,6 +37,7 @@
         <button id="reset_bt">RESET</button>
         <button id="lap_bt">LAP</button>
         <button id="stop_bt">ST0P</button>
+        <button id="clear_bt">CLEAR</button>
     </div>
     <hr/>
     <hr/>
@@ -113,6 +114,12 @@
             li.innerText = format_time(date);
             let lap_list = document.getElementById('lap_list');
             lap_list.insertBefore(li, lap_list.firstChild);
+
+        let clear = document.getElementById('clear_bt');
+        clear.onclick = function () {
+            all_li = document.getElementsByTagName('li').
+                all_li.removeChild
+            }
 
         }
     </script>

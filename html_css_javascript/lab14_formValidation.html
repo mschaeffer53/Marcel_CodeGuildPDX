@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+    <meta name="description" content="Description">
+    <link rel="stylesheet" type="text/css" href="Style">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div{
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation Lab</h1>
+    <input id="user_name_input" placeholder="user name" type="text">
+    <span id="user_name_info" style="display: none; color:red;">user name must be more than 6 characters :/</span>
+
+    <div></div>
+
+    <input id="password_input" placeholder="password" type="password">
+    <span id="password_info" style="display: none; color:red;">password must be more than 6 characters :/</span>
+
+
+    <script>
+        //regular expression for user name and password. Any letter or number between 7-100 chars
+        let pattern = /^[\d\w]{7,}$/;
+
+
+        let user_name_input = document.querySelector("#user_name_input");
+        let user_name_info = document.querySelector("#user_name_info");
+
+        let password_input = document.querySelector("#password_input");
+        let password_info = document.querySelector("#password_info");
+
+
+        user_name_input.oninput = function () {
+            if (!pattern.test(this.value)){
+                this.style.outline = '1px solid red';
+                user_name_info.style.display = 'inline';
+            }
+            else {
+                this.style.outline = '1px solid black';
+                user_name_info.style.display = 'none';
+            }
+        }
+
+
+        password_input.oninput = function () {
+            if (!pattern.test(this.value)){
+                this.style.outline = '1px solid red';
+                password_info.style.display = 'inline';
+            }
+            else {
+                this.style.outline = '1px solid black';
+                password_info.style.display = 'none';
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

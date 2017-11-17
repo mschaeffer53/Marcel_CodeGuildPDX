@@ -6,23 +6,82 @@
     <meta name="description" content="Description">
     <link rel="stylesheet" type="text/css" href="Style">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1{
+            color:hotpink;
+        }
+        div{
+            color:hotpink;
+        }
+    </style>
 </head>
 <body>
     <script>
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                let data = JSON.parse(xhttp.responseText);
-                for (i=0; i<data.data.length; i++) {
-//                    console.log(data.data[i])
-                    let div = document.createElement("div");
-                    div.innerText = data.data[i].first_name;
-                    document.body.appendChild(div);
-                }
-            }
-        };
-        xhttp.open("GET", 'https://reqres.in/api/users?page=2');
-        xhttp.send();
+        function random_color() {
+            let red = Math.floor(Math.random() * 256);
+            let green = Math.floor(Math.random() * 256);
+            let blue = Math.floor(Math.random() * 256);
+            let rand_color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        }
+
+//        let color = window.requestAnimationFrame(random_color);
+
+        let headline = document.createElement("h1");
+        headline.innerText = "Hot singles in your area";
+        document.body.appendChild(headline);
     </script>
+    <div id="container">
+    </div>
+    <script>
+        let container = document.querySelector('#container');
+        function do_api() {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let data = JSON.parse(xhttp.responseText);
+                    for (let i = 0; i < data.data.length; i++) {
+                        console.log(data.data[i]);
+
+                        let outer_div = document.createElement('div');
+
+                        let name_div = document.createElement("div");
+                        name_div.innerText = "Name: " + data.data[i].first_name;
+                        outer_div.appendChild(name_div);
+
+                        let last_name_div = document.createElement("div");
+                        last_name_div.innerText = data.data[i].last_name;
+                        outer_div.appendChild(last_name_div);
+
+                        let img_tag = document.createElement("img");
+                        img_tag.id = "img" + i;
+                        img_tag.src = data.data[i].avatar;
+                        outer_div.appendChild(img_tag);
+
+
+                        let hr = document.createElement("hr");
+                        outer_div.appendChild(hr);
+
+                        container.appendChild(outer_div);
+                    }
+                }
+            };
+            xhttp.open("GET", 'https://reqres.in/api/users?page=2');
+            xhttp.send();
+        }
+        do_api();
+
+        //load next page
+        let next = document.getElementById("next_btn");
+        next.onclick = function() {
+            do_api();
+        }
+
+
+
+
+    </script>
+
+    <button id="prev_btn"> &ltprevious</button>
+    <button id="next_btn"> next&gt</button>
 </body>
 </html>

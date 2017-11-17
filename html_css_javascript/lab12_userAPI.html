@@ -32,7 +32,11 @@
     </script>
     <div id="container">
     </div>
+
+    <button id="prev_btn"> &ltprevious</button>
+    <button id="next_btn"> next&gt</button>
     <script>
+        let page = 1;
         let container = document.querySelector('#container');
         function do_api() {
             let xhttp = new XMLHttpRequest();
@@ -65,7 +69,7 @@
                     }
                 }
             };
-            xhttp.open("GET", 'https://reqres.in/api/users?page=2');
+            xhttp.open("GET", `https://reqres.in/api/users?page=${page}`);
             xhttp.send();
         }
         do_api();
@@ -73,15 +77,22 @@
         //load next page
         let next = document.getElementById("next_btn");
         next.onclick = function() {
+            let container = document.getElementById("container");
+            container.innerHTML = "";
+            page++;
             do_api();
-        }
+        };
 
-
+        //load previous page
+        let previous = document.getElementById("prev_btn");
+        previous.onclick = function() {
+        let container = document.getElementById("container");
+            container.innerHTML = "";
+            page--;
+            do_api();
+        };
 
 
     </script>
-
-    <button id="prev_btn"> &ltprevious</button>
-    <button id="next_btn"> next&gt</button>
 </body>
 </html>

@@ -14,7 +14,10 @@
             if (this.readyState === 4 && this.status === 200) {
                 let data = JSON.parse(xhttp.responseText);
                 for (i=0; i<data.data.length; i++) {
-                    console.log(data.data[i])
+//                    console.log(data.data[i])
+                    let div = document.createElement("div");
+                    div.innerText = data.data[i].first_name;
+                    document.body.appendChild(div);
                 }
             }
         };

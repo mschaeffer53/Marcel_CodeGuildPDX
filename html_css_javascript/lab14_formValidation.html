@@ -42,6 +42,17 @@
     <input id="phone_input" placeholder="555-123-4567" type="text">
     <span id="phone_info" style="display: none; color:red;">must enter valid phone number</span>
 
+    <div></div>
+    <hr>
+    <h3>Date of Birth</h3>
+    <input id="dob_input" placeholder="1/17/1987" type="text">
+    <span id="dob_info" style="display: none; color:red;">enter your actual birthday</span>
+
+    <div></div>
+    <hr>
+    <h3>SSN</h3>
+    <input id="ssn_input" placeholder="###-##-####" type="text">
+    <span id="ssn_info" style="display: none; color:red;">enter your ssn</span>
 
     <script>
         //regular expression for user name and password. Any letter or number between 7-100 chars
@@ -113,7 +124,7 @@
 
 
         //regular expression for phone number
-        let phone_pattern = /^\d{3}-\d{3}-\d{4}$/
+        let phone_pattern = /^\d{3}-\d{3}-\d{4}$/;
 
         //phone number validation
         let phone_input = document.querySelector("#phone_input");
@@ -130,6 +141,40 @@
         };
 
 
+        //regular expression for birthday
+        let dob_pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+
+        //birthday validation
+        let dob_input = document.querySelector("#dob_input");
+        let dob_info = document.querySelector("#dob_info");
+
+        dob_input.oninput = function(){
+            if (!dob_pattern.test(this.value)){
+                this.style.outline = '1px solid red';
+                dob_info.style.display = 'inline';
+            } else{
+                this.style.outline = '1px solid black';
+                dob_info.style.display = 'none';
+            }
+        };
+
+
+        //regular expression for snn
+        let ssn_pattern = /^\d{3}-\d{2}-\d{4}$/;
+
+        //ssn validation
+        let ssn_input = document.querySelector("#ssn_input");
+        let ssn_info = document.querySelector("#ssn_info");
+
+        ssn_input.oninput = function(){
+            if (!ssn_pattern.test(this.value)){
+                this.style.outline = '1px solid red';
+                ssn_info.style.display = 'inline';
+            } else{
+                this.style.outline = '1px solid black';
+                ssn_info.style.display = 'none';
+            }
+        };
     </script>
 </body>
 </html>

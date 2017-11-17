@@ -11,27 +11,30 @@
             color:hotpink;
         }
         div{
-            color:hotpink;
+            color:cornflowerblue;
         }
     </style>
 </head>
 <body>
     <script>
-        function random_color() {
-            let red = Math.floor(Math.random() * 256);
-            let green = Math.floor(Math.random() * 256);
-            let blue = Math.floor(Math.random() * 256);
-            let rand_color = 'rgb(' + red + ',' + green + ',' + blue + ')';
-        }
+//        function random_color() {
+//            let red = Math.floor(Math.random() * 256);
+//            let green = Math.floor(Math.random() * 256);
+//            let blue = Math.floor(Math.random() * 256);
+//            let rand_color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+//        }
+//
+//        let rand_color = window.requestAnimationFrame(random_color);
 
-//        let color = window.requestAnimationFrame(random_color);
 
         let headline = document.createElement("h1");
         headline.innerText = "Hot singles in your area";
         document.body.appendChild(headline);
     </script>
     <div id="container">
+
     </div>
+
 
     <button id="prev_btn"> &ltprevious</button>
     <button id="next_btn"> next&gt</button>
@@ -49,12 +52,12 @@
                         let outer_div = document.createElement('div');
 
                         let name_div = document.createElement("div");
-                        name_div.innerText = "Name: " + data.data[i].first_name;
+                        name_div.innerText = "Name: " + data.data[i].first_name + " " + data.data[i].last_name;
                         outer_div.appendChild(name_div);
 
-                        let last_name_div = document.createElement("div");
-                        last_name_div.innerText = data.data[i].last_name;
-                        outer_div.appendChild(last_name_div);
+//                        let last_name_div = document.createElement("div");
+//                        last_name_div.innerText = data.data[i].last_name;
+//                        outer_div.appendChild(last_name_div);
 
                         let img_tag = document.createElement("img");
                         img_tag.id = "img" + i;
@@ -74,6 +77,8 @@
         }
         do_api();
 
+        let previous = document.getElementById("prev_btn");
+        previous.disabled=true;
         //load next page
         let next = document.getElementById("next_btn");
         next.onclick = function() {
@@ -81,15 +86,22 @@
             container.innerHTML = "";
             page++;
             do_api();
+            previous.disabled = false;
         };
 
         //load previous page
-        let previous = document.getElementById("prev_btn");
+
+
+
+
         previous.onclick = function() {
         let container = document.getElementById("container");
             container.innerHTML = "";
             page--;
             do_api();
+            if (page < 2) {
+                this.disabled = true;
+            }
         };
 
 

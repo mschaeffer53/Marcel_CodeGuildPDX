@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>API Lab</title>
     <meta name="description" content="Description">
-    <link rel="stylesheet" type="text/css" href="Style">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         h1{
@@ -13,6 +12,8 @@
         div{
             color:cornflowerblue;
         }
+
+
     </style>
 </head>
 <body>
@@ -40,19 +41,27 @@
     <button id="next_btn"> next&gt</button>
     <script>
         let page = 1;
+        let total_pages = null;
         let container = document.querySelector('#container');
         function do_api() {
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     let data = JSON.parse(xhttp.responseText);
+                    total_pages = data.total_pages;
+                    console.log(data);
                     for (let i = 0; i < data.data.length; i++) {
-                        console.log(data.data[i]);
+                        //console.log(data.data[i]);
+
+                        let first_name = data.data[i].first_name;
+                        let last_name = data.data[i].last_name;
+                        let avatar = data.data[i].avatar;
+
 
                         let outer_div = document.createElement('div');
 
                         let name_div = document.createElement("div");
-                        name_div.innerText = "Name: " + data.data[i].first_name + " " + data.data[i].last_name;
+                        name_div.innerText = "Name: " + first_name + " " + last_name;
                         outer_div.appendChild(name_div);
 
 //                        let last_name_div = document.createElement("div");
@@ -61,7 +70,8 @@
 
                         let img_tag = document.createElement("img");
                         img_tag.id = "img" + i;
-                        img_tag.src = data.data[i].avatar;
+                        img_tag.src = avatar;
+                        img_tag.title = first_name + ' ' + last_name;
                         outer_div.appendChild(img_tag);
 
 
@@ -69,6 +79,15 @@
                         outer_div.appendChild(hr);
 
                         container.appendChild(outer_div);
+
+
+                        let image = document.getElementsByTagName("img");
+                        image.onmouseover = function() {
+                            let image_div = document.createElement("div");
+                            image_div.innerText = data.data[i].first_name;
+                            outer_div.appendChild(image_div);
+                        };
+
                     }
                 }
             };
@@ -87,7 +106,7 @@
             page++;
             do_api();
             previous.disabled = false;
-            if (page>3) {
+            if (page === total_pages) {
                 this.disabled = true;
             }
 
@@ -104,7 +123,7 @@
             page--;
             do_api();
             next.disabled = false;
-            if (page < 2) {
+            if (page === 1) {
                 this.disabled = true;
             }
 

@@ -86,10 +86,11 @@
             container.innerHTML = "";
             page++;
             do_api();
-            if (page>3){
+            previous.disabled = false;
+            if (page>3) {
                 this.disabled = true;
             }
-            previous.disabled = false;
+
         };
 
         //load previous page
@@ -102,6 +103,7 @@
             container.innerHTML = "";
             page--;
             do_api();
+            next.disabled = false;
             if (page < 2) {
                 this.disabled = true;
             }

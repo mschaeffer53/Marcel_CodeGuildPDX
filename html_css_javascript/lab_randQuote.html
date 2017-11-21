@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <title>Random Quote</title>
     <meta name="description" content="Description">
+    <style>
+        #quote{
+            font-size:40px;
+            font-style:italic;
+            color: white;
+        }
+
+        #author{
+            font-size:24px;
+            color:white
+        }
+
+        body{
+            background-image: url('book.jpg');
+        }
+    </style>
 
 </head>
 <body>
-    <h1>
-        Quote of the Day
-    </h1>
+
     <div id="container">
     </div>
     <script>
@@ -37,13 +51,15 @@
 
         http_get(url, function(data){
             let container = document.getElementById("container");
-            let quote_div = document.createElement("div");
-            let author_div = document.createElement("div");
+            let quote_block = document.createElement("blockquote");
+            let author_block = document.createElement("blockquote");
 
-            quote_div.innerText = data.body;
-            author_div.innerText = data.author;
-            container.appendChild(quote_div);
-            container.appendChild(author_div);
+            quote_block.innerText = '"' + data.body + '"';
+            quote_block.id = "quote";
+            author_block.innerText = '-' + data.author;
+            author_block.id = "author";
+            container.appendChild(quote_block);
+            container.appendChild(author_block);
             console.log(data)
         })
 

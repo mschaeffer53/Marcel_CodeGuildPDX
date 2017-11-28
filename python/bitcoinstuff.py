@@ -7,7 +7,10 @@ response = urlopen(req)
 data = json.loads(response.read())
 
 
-for market in data['Markets']:
+my_coins = ['Zencash', 'Bitcoin', 'Litecoin', 'Vertcoin', 'Digitalprice', 'Ethereum', 'Diamond', 'Monero', 'Bitcoingold']
 
-    print(market["Name"] + ' : ' + str(market["Price_usd"]))
+for market in data['Markets']:
+    for coin in my_coins:
+        if market['Name'] == coin:
+            print(market["Name"] + ' : ' + str(market["Price_usd"]) + ' dollars.')
 

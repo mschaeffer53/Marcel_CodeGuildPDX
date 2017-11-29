@@ -1,0 +1,35 @@
+<style>
+    ul li {
+        text-decoration: underline;
+    }
+
+    ul li:nth-child(odd) {
+        background-color: lightgray;
+    }
+
+    h1 {
+        color: #465C69;
+    }
+
+
+</style>
+<h1>To-do</h1>
+<hr/>
+<form action = "{% url 'todo:savetodo' %}" method="post">
+    {% csrf_token %}
+
+    <input type = 'text' name="todo_text"/>
+    <button type="submit">add to-do</button>
+
+</form>
+
+
+<hr/>
+<ul>
+    {% for todo_item in todo_items %}
+    <li>{{ todo_item.todo_text }}</li>
+    {% endfor %}
+</ul>
+
+<hr/>
+<hr/>

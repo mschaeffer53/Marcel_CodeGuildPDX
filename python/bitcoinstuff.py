@@ -7,7 +7,7 @@ response = urlopen(req)
 data = json.loads(response.read())
 
 
-my_coins = ['Zencash', 'Bitcoin', 'Litecoin', 'Vertcoin', 'Digitalprice', 'Ethereum', 'Diamond', 'Monero', 'Bitcoingold']
+my_coins = ['Zencash', 'Bitcoin', 'Litecoin', 'Vertcoin', 'Digitalprice', 'Ethereum', 'Diamond', 'Monero', 'Bitcoingold', 'Omisego', 'Factom', 'Neo']
 
 for market in data['Markets']:
     for coin in my_coins:

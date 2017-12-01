@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Any Api Lab</title>
+    <meta name="description" content="Description">
+
+</head>
+<body>
+    <script>
+
+//    //team_array = ["NYG", "ATL", "SEA"];
+//
+//    function do_api() {
+//        let xhttp = new XMLHttpRequest();
+//        xhttp.onreadystatechange = function () {
+//            if (this.readyState === 4 && this.status === 200) {
+//                let data = JSON.parse(xhttp.responseText);
+//                console.log(data);
+//            }
+//
+//        //xhttp.open("GET", 'http://nflarrest.com/api/v1/team/topCrimes/ATL)');
+//        xhttp.open("GET", 'https://www.worldcoinindex.com/apiservice/json?key=5cukMpmjhFXhd4ZN779xKfqIbaNpqk');
+//        xhttp.send();
+//        }}
+//
+//
+//    do_api()
+        function http_get(url, success) {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    let data = JSON.parse(xhttp.responseText);
+                    success(data);
+                }
+            };
+            xhttp.open("GET", url);
+            xhttp.send();
+        }
+
+        http_get("https://www.worldcoinindex.com/apiservice/json?key=5cukMpmjhFXhd4ZN779xKfqIbaNpqk", function(data) {
+                console.log(data);
+            });
+    </script>
+</body>
+</html>

@@ -47,4 +47,8 @@ def savetodo(request):
 
 def completetodo(request):
     todo_id = request.POST['todo_id']
-    #todo_item =
+    todo_item = TodoItem.objects.get(pk=todo_id)
+    todo_item.completed = True
+    todo_item.save()
+
+    return HttpResponseRedirect(reverse('todo:index'))

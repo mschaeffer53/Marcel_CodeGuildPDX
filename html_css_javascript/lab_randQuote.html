@@ -45,8 +45,8 @@
         xhttp.send();
         }
 
-        quote_id = Math.floor(Math.random()*1000);
-        url = `https://favqs.com/api/quotes/${quote_id}`;
+        let quote_id = Math.floor(Math.random()*1000);
+        let url = `https://favqs.com/api/quotes/${quote_id}`;
 
 
         http_get(url, function(data){

@@ -1,0 +1,15 @@
+<h1>
+    Library Checkout
+</h1>
+<hr/>
+<form action="{% url 'library:checkout' %}" method="POST">
+    {% csrf_token %}
+    <select name="book_id">
+        <option value="blank" selected="selected">--Choose a book--</option>
+        {% for book in books %}
+            <option value="{{book.id}}">{{book.title}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">submit</button>
+</form>
+

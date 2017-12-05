@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+
 # Create your models here.
 
 
@@ -20,7 +21,6 @@ class Book(models.Model):
 
 
 class RentalStatus(models.Model):
-
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     checked_in = models.BooleanField(default=True)
     user = models.CharField(max_length=25, null=True)
@@ -29,5 +29,3 @@ class RentalStatus(models.Model):
     def __str__(self):
         return f'{self.user} {self.checked_in} {self.timestamp}'
 
-# class Rental_history(models.Model):
-#     history = ''

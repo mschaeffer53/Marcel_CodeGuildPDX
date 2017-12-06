@@ -1,0 +1,42 @@
+
+<style>
+    table{
+        border: solid black 1px;
+    }
+    tr, td{
+        border: solid black 1px;
+        padding: 6px
+    }
+</style>
+
+<h1>Rental Log History</h1>
+<hr/>
+
+<form action="{% url 'library:rentallog' %}" method="POST">
+    {% csrf_token %}
+    <!--<ul>-->
+        <!--{% for status in rental_statuses %}-->
+        <!--<li>{{status.user}} - {{status.book.title}} - {{status.checked_in}} - {{status.timestamp}}</li>-->
+        <!--{% endfor %}-->
+    <!--</ul>-->
+
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Available</th>
+            <th>Timestamp</th>
+        </tr>
+        <tr>
+            {% for status in rental_statuses %}
+                <tr>
+                    <td>{{status.user}}</td>
+                    <td>{{status.book.title}}</td>
+                    <td>{{status.checked_in}}</td>
+                    <td>{{status.timestamp}}</td>
+                <tr/>
+            {% endfor %}
+        </tr>
+    </table>
+</form>
+

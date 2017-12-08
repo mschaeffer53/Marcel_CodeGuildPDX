@@ -1,0 +1,14 @@
+<h1>Blog Sign-in</h1>
+
+<form action="{% url 'blog:mylogin' %}" method="POST">
+    {% csrf_token %}
+
+    <input type="text" placeholder="user name" name="user_name">
+    <input type="password" placeholder="password" name="password">
+
+    <button type="submit"> Sign in </button>
+
+</form>
+
+
+<a href="{% url 'blog:registration_page' %}">Create new account</a>

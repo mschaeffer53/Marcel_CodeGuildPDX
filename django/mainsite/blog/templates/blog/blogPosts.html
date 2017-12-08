@@ -1,0 +1,27 @@
+<style>
+    .text{
+        display: flex;
+        padding: 3px;
+    }
+    button{
+        margin: 3px;
+    }
+    div{
+        padding:2px
+    }
+</style>
+
+<h1> Create a Blog Post </h1>
+<hr/>
+
+<form action="{% url 'blog:create_post' %}" method="POST">
+
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Title" class="text" required>
+    <div></div>
+    <textarea placeholder="Write content here" class="text" name="body" rows="25" cols="75" required></textarea>
+    <div></div>
+    <button type="submit" name="post_content"> Post </button>
+
+
+</form>

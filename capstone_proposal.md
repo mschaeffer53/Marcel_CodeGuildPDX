@@ -86,7 +86,7 @@ A basic account will let you:
   -Lost Status (boolean)
   -Foreign key (link dog's map information)
   
-  *Map information
+  *Map information*
   -Location
   -Timestamp
   

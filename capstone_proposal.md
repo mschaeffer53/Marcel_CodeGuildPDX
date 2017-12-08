@@ -38,6 +38,7 @@ Libraries and frameworks:
 **Functionality**
 
 *New users will be prompted to set up an account* 
+
 A basic account will let you:
   -See maps of lost dogs/sighted dogs
   -Post your own sightings of dogs to the network
@@ -48,6 +49,7 @@ A basic account will let you:
   - Easily notify the network of your missing dog
   
  *Once signed in*
+ 
  The user will see a map of missing dogs in their area.
  The map will have points that represent where a dog was seen,
  and a line connecting the dots of a specific dog chronologically. The line connectiing the 
@@ -56,15 +58,16 @@ A basic account will let you:
  Users can click on dog profiles to get more details about the dog (e.g. name, breed, age, pictures, rewards).
  
  *Recovering a lost dog*
+ 
  Non-owners of the dog:
- -Can report a "soft-recovery" (i.e. the dog is found but not returned to the owner).
- -Owners will be alerted of the "soft-recovery" and the two parties will be able to contact each other.
+ - Can report a "soft-recovery" (i.e. the dog is found but not returned to the owner).
+ - Owners will be alerted of the "soft-recovery" and the two parties will be able to contact each other.
  
  Owners of the dog:
- -Can report a "hard-recover" (i.e. the dog is home).
- -The instances of the dog on the map will be removed.
- -Post a success story.
- -Send a reward to "soft-recovery" user.
+ - Can report a "hard-recover" (i.e. the dog is home).
+ - The instances of the dog on the map will be removed.
+ - Post a success story.
+ - Send a reward to "soft-recovery" user.
  
  *Other possible features*
   - A fun point reward system to game-ify the app. You get points for spotting dogs and recovering them. Unlock flair and different levels of awesomeness.

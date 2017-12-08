@@ -40,8 +40,8 @@ Libraries and frameworks:
 *New users will be prompted to set up an account* 
 
 A basic account will let you:
-  -See maps of lost dogs/sighted dogs
-  -Post your own sightings of dogs to the network
+  - See maps of lost dogs/sighted dogs
+  - Post your own sightings of dogs to the network
   
  An advanced account will let you:
   - Same features of basic account

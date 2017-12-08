@@ -1,8 +1,9 @@
 
 ### Marcel's Capstone Proposal
-<hr/>
 PDX Code Guild
 12/8/2017
+<hr/>
+
 
 **Name of Project**
 
@@ -13,11 +14,13 @@ Doggonnit
 Doggonnit is an app that lets a network of users help track and locate lost dogs.
 
 Problem:
+
 Everyday dogs run away, and families are left to search by themselves for their beloved pet.
 Pedestrians, bikers, and drivers see these lost dogs running around their neiborhood, but for several reasons
 (e.g. safety, time, physical ability) they may not be able to help catch the animal.
 
 Solution:
+
 This app will facilitate an exchange of information between these people so that dogs are reunited with their families sooner.
 
 Features:

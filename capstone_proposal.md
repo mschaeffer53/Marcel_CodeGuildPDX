@@ -1,6 +1,7 @@
 
 ### Marcel's Capstone Proposal
 PDX Code Guild
+
 12/8/2017
 <hr/>
 

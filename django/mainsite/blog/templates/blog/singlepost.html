@@ -1,4 +1,40 @@
+<style>
+    .comment_div{
+        display: flex;
+        align-items: flex-end;
+    }
+    button{
+        margin:3px;
+    }
+
+    .logout_div{
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+
 <h1>Body</h1>
+<hr/>
+
+<div class="logout_div">
+    <a href="{% url 'blog:blogPosts' %}">Create a new post</a>
+    <form action="{% url 'blog:logout_view' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit"> Logout </button>
+    </form>
+</div>
+
 <ul>
-    <li>{{post.body}}</li>
+    <h4>{{post.title}} - {{post.user}} - {{post.timestamp}}</h4>
+    <h5>{{post.body}}</h5>
+    <div>
+        <form action="{% url 'blog:blogFeed' %}" method="POST">
+            {% csrf_token %}
+            <div class="comment_div">
+                <textarea placeholder="Comment here" class="text" name="comment" rows="2" cols="65" required></textarea>
+                <button type="submit"> Comment </button>
+            </div>
+        </form>
+    </div>
 </ul>

@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'todo',
     'poll',
+    'library',
+    'blog',
     # 'poll.apps.PollConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'url_short'
+    'url_short',
+    'doggonnit'
 ]
 
 MIDDLEWARE = [

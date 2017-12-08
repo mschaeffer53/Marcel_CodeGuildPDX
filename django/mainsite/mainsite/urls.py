@@ -20,5 +20,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^todo/', include('todo.urls')),
     url(r'^poll/', include('poll.urls')),
-    url(r'^url_short/', include('url_short.urls'))
+    url(r'^url_short/', include('url_short.urls')),
+    url(r'library/', include('library.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'blog/', include('blog.urls')),
+    url(r'doggonnit/', include('doggonnit.urls'))
 ]

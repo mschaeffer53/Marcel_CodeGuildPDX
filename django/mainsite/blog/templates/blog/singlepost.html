@@ -18,7 +18,7 @@
 <hr/>
 
 <div class="logout_div">
-    <a href="{% url 'blog:blogPosts' %}">Create a new post</a>
+    <a href="{% url 'blog:makepost' %}">Create a new post</a>
     <form action="{% url 'blog:logout_view' %}" method="POST">
         {% csrf_token %}
         <button type="submit"> Logout </button>
@@ -29,7 +29,7 @@
     <h4>{{post.title}} - {{post.user}} - {{post.timestamp}}</h4>
     <h5>{{post.body}}</h5>
     <div>
-        <form action="{% url 'blog:blogFeed' %}" method="POST">
+        <form action="{% url 'blog:savecomment' post.id %}" method="POST">
             {% csrf_token %}
             <div class="comment_div">
                 <textarea placeholder="Comment here" class="text" name="comment" rows="2" cols="65" required></textarea>
@@ -37,4 +37,10 @@
             </div>
         </form>
     </div>
+</ul>
+
+<ul>
+    {% for comment in post.comment_set.all %}
+    <li>{{comment.user}} says... " {{comment.body}} "  ({{comment.timestamp}})</li>
+    {% endfor %}
 </ul>

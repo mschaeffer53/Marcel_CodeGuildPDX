@@ -17,8 +17,15 @@
 <h1>Blog Feed</h1>
 <hr/>
 
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}
+
+
 <div class="logout_div">
-    <a href="{% url 'blog:blogPosts' %}">Create a new post</a>
+    <a href="{% url 'blog:makepost' %}">Create a new post</a>
     <form action="{% url 'blog:logout_view' %}" method="POST">
         {% csrf_token %}
         <button type="submit"> Logout </button>
@@ -31,8 +38,8 @@
     <ul>
         {% for blo in blog %}
             <li>
-                <a href="{% url 'blog:singlepost' pk=blo.pk %}">{{blo.title}}</a>  -by {{blo.user}}</li>
-                <form action="{% url 'blog:blogFeed' %}" method="POST">
+                <a href="{% url 'blog:singlepost' blo.id %}">{{blo.title}}</a>  -by {{blo.user}}</li>
+                <form action="{% url 'blog:blogfeed' %}" method="POST">
                     {% csrf_token %}
 
                 </form>

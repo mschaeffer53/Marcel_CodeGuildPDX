@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Blogpost, Comment
+from .models import BlogPost, Comment
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login, logout
 
@@ -20,15 +20,15 @@ def createUser(request):
     user.save()
     group.user_set.add(user)
     group.save()
-    return HttpResponseRedirect(reverse('blog:blogFeed'))
+    login(request, user)
+    return HttpResponseRedirect(reverse('blog:blogfeed'))
 
 
 def registration_page(request):
     return render(request, 'blog/createUser.html', {})
 
-def blogPosts(request):
-    # @login_required
-    return render(request, 'blog/blogPosts.html', {})
+def makepost(request):
+    return render(request, 'blog/makepost.html', {})
 
 def create_post(request):
 
@@ -37,15 +37,17 @@ def create_post(request):
     title = request.POST['title']
 
 
-    blog = Blogpost(title=title, body=body, user=request.user)
+    blog = BlogPost(title=title, body=body, user=request.user)
     blog.save()
 
 
-    return HttpResponseRedirect(reverse('blog:blogFeed'))
+    return HttpResponseRedirect(reverse('blog:blogfeed'))
 
-def blogFeed(request):
-    posts = Blogpost.objects.all()
-    return render(request, 'blog/blogFeed.html', {'blog': posts})
+
+def blogfeed(request):
+    posts = BlogPost.objects.all()
+    return render(request, 'blog/blogfeed.html', {'blog': posts})
+
 
 def mylogin(request):
     # retrieve the variables from the form submission
@@ -54,7 +56,7 @@ def mylogin(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(reverse('blog:blogFeed'))
+        return HttpResponseRedirect(reverse('blog:blogfeed'))
     else:
         return HttpResponse('invalid credentials')
 
@@ -62,7 +64,15 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('blog:index'))
 
-def singlepost(request, pk):
-    post = get_object_or_404(Blogpost, pk=pk)
+def singlepost(request, blogpost_id):
+    post = get_object_or_404(BlogPost, pk=blogpost_id)
 
     return render(request, 'blog/singlepost.html', {'post': post})
+
+def savecomment(request, blogpost_id):
+    comment_body = request.POST['comment']
+    comment = Comment(user=request.user, blogpost_id=blogpost_id, body=comment_body)
+    comment.save()
+    # get the comment out of request.POST
+    return HttpResponseRedirect(reverse('blog:singlepost', kwargs={'blogpost_id':blogpost_id}))
+

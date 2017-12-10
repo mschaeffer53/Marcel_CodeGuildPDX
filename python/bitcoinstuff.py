@@ -7,8 +7,13 @@ response = urlopen(req)
 data = json.loads(response.read())
 
 
-my_coins = ['Zencash', 'Bitcoin', 'Litecoin', 'Vertcoin', 'Digitalprice', 'Ethereum', 'Diamond', 'Monero', 'Bitcoingold', 'Omisego', 'Factom', 'Neo', 'Iota', 'Request']
-my_amount = {'Bitcoin': .09, 'Zencash': 3.5, 'Litecoin': 1, 'Vertcoin': 51, 'Digitalprice': 5751, 'Ethereum': .5, 'Diamond': 6, 'Monero': .4, 'Bitcoingold': .05, 'Omisego': 15, 'Factom': 1, 'Neo': 1.3, 'Iota': 25, 'Request': 0}
+my_coins = ['Zencash', 'Bitcoin', 'Litecoin', 'Vertcoin', 'Digitalprice', 'Ethereum', 'Diamond', 'Monero', 'Bitcoingold',
+            'Omisego', 'Factom', 'Neo', 'Iota', 'Request', 'Ark', 'Bat', 'Nem']
+
+my_amount = {'Bitcoin': .0923, 'Zencash': 3.6, 'Litecoin': 1.08, 'Vertcoin': 51, 'Digitalprice': 5751, 'Ethereum': .578,
+             'Diamond': 6, 'Monero': .4, 'Bitcoingold': .05, 'Omisego': 15, 'Factom': 1, 'Neo': 1.47, 'Iota': 25, 'Request': 0,
+             'Ark': 10, 'Bat': 250, 'Nem': 84}
+
 portfolio_total = 0
 
 
@@ -17,6 +22,6 @@ for market in data['Markets']:
         if market['Name'] == coin:
             amount = (market["Price_usd"])* my_amount[market['Name']]
             portfolio_total += amount
-            print(market["Name"] + ' : ' + str(market["Price_usd"]) + ' dollars per coin. That\'s worth ' + str(amount) + ' to me.')
-
-print(f'My portfolio is worth {portfolio_total}.')
+            print(market["Name"] + ' : $' + format(market["Price_usd"], '.2f') + ' per coin. That\'s worth $' + format(amount, '.2f') + ' to me.')
+print('\n')
+print(f'My portfolio is worth ${portfolio_total}.')
